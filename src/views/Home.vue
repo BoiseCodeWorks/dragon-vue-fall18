@@ -1,6 +1,6 @@
 <template>
   <div class="home container-fluid">
-    <button disabled="ready" :class="{'btn-success':ready}" class="btn btn-primary" @click="startGame">Start Game</button>
+    <button :disabled="!ready()" :class="{'btn-success':ready()}" class="btn btn-primary" @click="startGame">Start Game</button>
     <div class="row justify-content-around">
       <div class="col-5">
         <div @click="newGame.dragonId=dragon.id" class="border rounded m-2" v-for="dragon in dragons">
@@ -40,7 +40,7 @@
     },
     methods: {
       startGame() {
-        debugger
+
         this.$store.dispatch("startGame", this.newGame)
       },
       ready() {

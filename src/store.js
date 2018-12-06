@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import axios from 'axios'
+import router from './router';
 
 let dragonapi = axios.create({
   baseURL: "//dragon-duel.herokuapp.com/api"
@@ -44,7 +45,8 @@ export default new Vuex.Store({
     startGame({ commit }, newGame) {
       dragonapi.post("/games", newGame)
         .then(res => {
-          commit('setGame', res.data)
+          commit('setGame', res.data.game)
+          router.push({ name: 'game' })
         })
     }
   }
