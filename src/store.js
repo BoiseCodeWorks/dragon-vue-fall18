@@ -46,7 +46,7 @@ export default new Vuex.Store({
       dragonapi.post("/games", newGame)
         .then(res => {
           commit('setGame', res.data.game)
-          router.push({ name: 'game' })
+          router.push({ name: 'game', params: { gameId: res.data.game._id } })
         })
     }
   }
