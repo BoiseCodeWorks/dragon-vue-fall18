@@ -2,10 +2,16 @@
   <div class="home container-fluid">
     <div class="row">
       <div class="col-6">
-        <div v-for="dragon in dragons"></div>
+        <div @click="newGame.dragonId=dragon.id" class="border rounded m-2" v-for="dragon in dragons">
+          {{dragon.name}}
+          <img :src="dragon.imgUrl" height="150">
+        </div>
       </div>
       <div class="col-6">
-        <div v-for="champion in champions"></div>
+        <div @click="newGame.championId=champion.id" class="border rounded m-2" v-for="champion in champions">
+          {{champion.name}}
+          <img :src="champion.imgUrl" height="150">
+        </div>
       </div>
 
     </div>
@@ -16,6 +22,11 @@
 
   export default {
     name: 'home',
+    data() {
+      return {
+        newGame: {}
+      }
+    },
     components: {
 
     },

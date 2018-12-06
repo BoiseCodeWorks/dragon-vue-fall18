@@ -11,6 +11,7 @@ export default new Vuex.Store({
   state: {
     champions: [],
     dragons: []
+
   },
   mutations: {
     setDragons(state, dragons) {
