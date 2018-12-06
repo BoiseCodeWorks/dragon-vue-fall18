@@ -42,11 +42,23 @@ export default new Vuex.Store({
           commit('setChampions', res.data)
         })
     },
+    getGame({ commit }, gameId) {
+      dragonapi.get("/games/" + gameId)
+        .then(res => {
+          commit('setGame', res.data)
+        })
+    },
     startGame({ commit }, newGame) {
       dragonapi.post("/games", newGame)
         .then(res => {
           commit('setGame', res.data.game)
           router.push({ name: 'game', params: { gameId: res.data.game._id } })
+        })
+    },
+    attack({ commit }, payload) {
+      dragonapi.put("/games/" + payload.gameId, payload.attack)
+        .then(res => {
+          commit("setGame", res.data)
         })
     }
   }

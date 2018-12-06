@@ -21,6 +21,9 @@
 
       }
     },
+    mounted() {
+      this.$store.dispatch("getGame", this.$route.params.gameId)
+    },
     computed: {},
     methods: {}
   }

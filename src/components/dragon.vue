@@ -7,6 +7,7 @@
       <div class="col-6">
         <img :src="dragon.imgUrl" height="150" alt="">
       </div>
+      <p class="col-12">{{dragon.currentHP}}</p>
     </div>
   </div>
 </template>
