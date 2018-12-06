@@ -10,7 +10,8 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
     champions: [],
-    dragons: []
+    dragons: [],
+    game: {}
 
   },
   mutations: {
@@ -19,6 +20,9 @@ export default new Vuex.Store({
     },
     setChampions(state, champions) {
       state.champions = champions
+    },
+    setGame(state, game) {
+      state.game = game
     }
   },
   actions: {
@@ -36,7 +40,12 @@ export default new Vuex.Store({
           console.log('champions', res.data)
           commit('setChampions', res.data)
         })
-
+    },
+    startGame({ commit }, newGame) {
+      dragonapi.post("/games", newGame)
+        .then(res => {
+          commit('setGame', res.data)
+        })
     }
   }
 })
