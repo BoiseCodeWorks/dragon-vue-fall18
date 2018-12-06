@@ -1,18 +1,35 @@
 <template>
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div class="home container-fluid">
+    <div class="row">
+      <div class="col-6">
+        <div v-for="dragon in dragons"></div>
+      </div>
+      <div class="col-6">
+        <div v-for="champion in champions"></div>
+      </div>
+
+    </div>
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
 
-export default {
-  name: 'home',
-  components: {
-    HelloWorld
+  export default {
+    name: 'home',
+    components: {
+
+    },
+    mounted() {
+      this.$store.dispatch('getDragons')
+      this.$store.dispatch('getChampions')
+    },
+    computed: {
+      dragons() {
+        return this.$store.state.dragons
+      },
+      champions() {
+        return this.$store.state.champions
+      }
+    }
   }
-}
 </script>
